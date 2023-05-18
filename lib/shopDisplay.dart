@@ -35,7 +35,8 @@ class _FirebaseDataPageState extends State<shopDisplay> {
     'Kartograph',
     'Wissenschaftlerin',
     'Kompass',
-    'Reisetagebuch'
+    'Reisetagebuch',
+    ''
   ];
   List<String> level = [
     '2',
@@ -55,7 +56,8 @@ class _FirebaseDataPageState extends State<shopDisplay> {
     ' ',
     ' ',
     ' ',
-    ' '
+    ' ',
+    ''
   ];
   List<String> kosten = [
     '1',
@@ -75,7 +77,8 @@ class _FirebaseDataPageState extends State<shopDisplay> {
     '4',
     '4',
     '2',
-    '3'
+    '3',
+    ''
   ];
   List<Color> colors = [
     Colors.greenAccent.shade700,
@@ -96,6 +99,28 @@ class _FirebaseDataPageState extends State<shopDisplay> {
     Colors.purple,
     Colors.purple,
     Colors.purple,
+    Colors.black,
+  ];
+  List<Color> iconcolors = [
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.amber,
+    Colors.black,
   ];
 
   @override
@@ -173,7 +198,7 @@ class _FirebaseDataPageState extends State<shopDisplay> {
                     name: namen[allekarten[i]],
                     level: level[allekarten[i]],
                     backgroundColor: colors[allekarten[i]],
-                    iconcolor: Colors.amber,
+                    iconcolor: iconcolors[allekarten[i]],
                   ),
               ],
             ),
@@ -191,7 +216,7 @@ class _FirebaseDataPageState extends State<shopDisplay> {
                     name: namen[allekarten[i]],
                     level: level[allekarten[i]],
                     backgroundColor: colors[allekarten[i]],
-                    iconcolor: Colors.amber,
+                    iconcolor: iconcolors[allekarten[i]],
                   ),
               ],
             ),
@@ -209,7 +234,7 @@ class _FirebaseDataPageState extends State<shopDisplay> {
                     name: namen[allekarten[i]],
                     level: level[allekarten[i]],
                     backgroundColor: colors[allekarten[i]],
-                    iconcolor: Colors.amber,
+                    iconcolor: iconcolors[allekarten[i]],
                   ),
               ],
             ),

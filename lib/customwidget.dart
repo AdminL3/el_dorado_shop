@@ -10,7 +10,7 @@ class CustomWidget extends StatefulWidget {
   final Color backgroundColor;
   final Color iconcolor;
 
-  CustomWidget({
+  const CustomWidget({
     Key? key,
     required this.id,
     required this.anzahl,
@@ -22,19 +22,45 @@ class CustomWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomWidgetState createState() => _CustomWidgetState();
 }
 
 class _CustomWidgetState extends State<CustomWidget> {
   late String path;
-
+  late String idn;
+  late String namen;
+  late String anzahln;
+  late String moneyn;
+  late String leveln;
+  late Color bgcolorn;
+  late Color icolorn;
   @override
   void initState() {
     int x = Functions.getidbycard(widget.name);
     path = Functions.getImagePathById(x);
     super.initState();
+    anzahl();
   }
-
+  void anzahl(){
+    idn = widget.id;
+    anzahln = widget.anzahl;
+    moneyn = widget.money;
+    namen = widget.name;
+    leveln = widget.level;
+    bgcolorn = widget.backgroundColor;
+    icolorn = widget.iconcolor;
+    int anzahlint = int.parse(anzahln);
+    if(anzahlint<1){
+      idn = '';
+      anzahln = '';
+      moneyn = '';
+      namen = '';
+      leveln = '';
+      bgcolorn = Colors.red;
+      icolorn = Colors.red;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +77,7 @@ class _CustomWidgetState extends State<CustomWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                widget.id,
+                idn,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
