@@ -129,8 +129,12 @@ class _FirebaseDataPageState extends State<shopDisplay> {
     setState(() {
       isLoading = true;
     });
-    fetchData();
-    Timer.periodic(const Duration(seconds: 5), (_) => fetchData());
+    Timer.periodic(const Duration(seconds: 10), (timer) {
+      fetchData();
+    });
+    setState(() {
+      isLoading = false;
+    });
   }
 
   Future<void> fetchData() async {
@@ -171,9 +175,6 @@ class _FirebaseDataPageState extends State<shopDisplay> {
       y = x.toString();
       anzahlOrderedID.add(y);
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   @override
@@ -183,64 +184,64 @@ class _FirebaseDataPageState extends State<shopDisplay> {
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 6; i < 12; i++)
-                  CustomWidget(
-                    id: allekartenstring[i],
-                    anzahl: anzahlOrderedID[allekarten[i]],
-                    money: kosten[allekarten[i]],
-                    name: namen[allekarten[i]],
-                    level: level[allekarten[i]],
-                    backgroundColor: colors[allekarten[i]],
-                    iconcolor: iconcolors[allekarten[i]],
+                Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (int i = 6; i < 12; i++)
+                        CustomWidget(
+                          id: allekartenstring[i],
+                          anzahl: anzahlOrderedID[allekarten[i]],
+                          money: kosten[allekarten[i]],
+                          name: namen[allekarten[i]],
+                          level: level[allekarten[i]],
+                          backgroundColor: colors[allekarten[i]],
+                          iconcolor: iconcolors[allekarten[i]],
+                        ),
+                    ],
                   ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (int i = 12; i < 18; i++)
+                        CustomWidget(
+                          id: allekartenstring[i],
+                          anzahl: anzahlOrderedID[allekarten[i]],
+                          money: kosten[allekarten[i]],
+                          name: namen[allekarten[i]],
+                          level: level[allekarten[i]],
+                          backgroundColor: colors[allekarten[i]],
+                          iconcolor: iconcolors[allekarten[i]],
+                        ),
+                    ],
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (int i = 0; i < 6; i++)
+                        CustomWidget(
+                          id: allekartenstring[i],
+                          anzahl: anzahlOrderedID[allekarten[i]],
+                          money: kosten[allekarten[i]],
+                          name: namen[allekarten[i]],
+                          level: level[allekarten[i]],
+                          backgroundColor: colors[allekarten[i]],
+                          iconcolor: iconcolors[allekarten[i]],
+                        ),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (int i = 12; i < 18; i++)
-                  CustomWidget(
-                    id: allekartenstring[i],
-                    anzahl: anzahlOrderedID[allekarten[i]],
-                    money: kosten[allekarten[i]],
-                    name: namen[allekarten[i]],
-                    level: level[allekarten[i]],
-                    backgroundColor: colors[allekarten[i]],
-                    iconcolor: iconcolors[allekarten[i]],
-                  ),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (int i = 0; i < 6; i++)
-                  CustomWidget(
-                    id: allekartenstring[i],
-                    anzahl: anzahlOrderedID[allekarten[i]],
-                    money: kosten[allekarten[i]],
-                    name: namen[allekarten[i]],
-                    level: level[allekarten[i]],
-                    backgroundColor: colors[allekarten[i]],
-                    iconcolor: iconcolors[allekarten[i]],
-                  ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

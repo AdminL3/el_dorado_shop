@@ -37,8 +37,6 @@ class _CustomWidgetState extends State<CustomWidget> {
   late Color icolorn;
   @override
   void initState() {
-    int x = Functions.getidbycard(widget.name);
-    path = Functions.getImagePathById(x);
     super.initState();
     anzahl();
   }
@@ -50,9 +48,15 @@ class _CustomWidgetState extends State<CustomWidget> {
     leveln = widget.level;
     bgcolorn = widget.backgroundColor;
     icolorn = widget.iconcolor;
+    int x = Functions.getidbycard(namen);
+    path = Functions.getImagePathById(x);
     int anzahlint = int.parse(anzahln);
+    if(leveln != ' '){
+      leveln = 'Level: $leveln';
+    }
     if(anzahlint<1){
       idn = '';
+      path = 'assets/red.png';
       anzahln = '';
       moneyn = '';
       namen = '';
@@ -67,7 +71,7 @@ class _CustomWidgetState extends State<CustomWidget> {
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: widget.backgroundColor,
+        color: bgcolorn,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +91,7 @@ class _CustomWidgetState extends State<CustomWidget> {
                 width: 50,
               ),
               Text(
-                widget.anzahl,
+                anzahln,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
@@ -97,7 +101,7 @@ class _CustomWidgetState extends State<CustomWidget> {
           ),
           const SizedBox(height: 12.0),
           Text(
-            widget.level,
+            leveln,
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 18.0),
           ),
@@ -107,12 +111,12 @@ class _CustomWidgetState extends State<CustomWidget> {
               children: [
                 CircleAvatar(
                   radius: 40.0,
-                  backgroundColor: Colors.deepOrange,
+                  backgroundColor: Colors.red,
                   backgroundImage: AssetImage(path),
                 ),
                 const SizedBox(height: 6.0),
                 Text(
-                  widget.name,
+                  namen,
                   style: const TextStyle(fontSize: 16.0),
                 ),
               ],
@@ -126,16 +130,16 @@ class _CustomWidgetState extends State<CustomWidget> {
                 child: Row(
                   children: [
                     Icon(Icons.attach_money,
-                        color: widget.iconcolor, size: 20.0),
+                        color: icolorn, size: 20.0),
                     Text(
-                      widget.money,
+                      moneyn,
                       style: const TextStyle(
                         fontSize: 16.0,
                         color: Colors.amber,
                       ),
                     ),
                     Icon(Icons.attach_money,
-                        color: widget.iconcolor, size: 20.0),
+                        color: icolorn, size: 20.0),
                   ],
                 ),
               ),
